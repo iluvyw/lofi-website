@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect, useMemo} from 'react'
+import React, {useContext, useState, useEffect, createContext} from 'react'
 import { Howl, Howler } from 'howler'
 
 import Audio1 from '../audio/angel.mp3'
@@ -6,7 +6,7 @@ import Audio2 from '../audio/blue.mp3'
 import Audio3 from '../audio/burn the memory.mp3'
 import Audio4 from '../audio/bye bye my blue.mp3'
 
-export const MediaContext = React.createContext(null)
+export const MediaContext = createContext(null)
 
 export const MediaProvider = ({children}) => {
     const sound1 = new Howl({
@@ -99,7 +99,6 @@ export const MediaProvider = ({children}) => {
 
 export default function useMedia() {
     const context = useContext(MediaContext)
-    console.log(context)
 
     if (context === undefined) {
         throw new Error('useMedia hook must be used with a Media component')
