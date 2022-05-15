@@ -9,77 +9,6 @@ export const MediaProvider = ({ children }) => {
     let sound
 
     useEffect(() => {
-        // const sound0 = new Howl({
-        //     src: ['https://soundbible.com/mp3/airplane-landing_daniel_simion.mp3'],
-        //     html5: true,
-        //     onend: () => {
-        //         console.log('Finished')
-        //         nextSound()
-        //     }
-        // })
-
-        // const sound1 = new Howl({
-        //     src: ['https://od.lk/s/NzJfNDI4NTk5NzFf/camellia.mp3'],
-        //     html5: true,
-        //     onend: nextSound
-        // })
-
-        // const sound2 = new Howl({
-        //     src: ['https://od.lk/s/NzJfNDI4NTk5NDRf/a%20night%20like%20tonight.mp3'],
-        //     html5: true,
-        //     onend: () => {
-        //         nextSound()
-        //     }
-        // })
-
-        // const sound3 = new Howl({
-        //     src: ['https://od.lk/s/NzJfNDI4NTk5NjJf/burn%20the%20memory.mp3'],
-        //     html5: true,
-        //     onend: () => {
-        //         nextSound()
-        //     }
-        // })
-
-        // const sound4 = new Howl({
-        //     src: ['https://od.lk/s/NzJfNDI4NTk5NTRf/angel.mp3'],
-        //     html5: true,
-        //     onend: () => {
-        //         nextSound()
-        //     }
-        // })
-
-        // const sound5 = new Howl({
-        //     src: ['https://od.lk/s/NzJfNDI4NTk5NTVf/blue.mp3'],
-        //     html5: true,
-        //     onend: () => {
-        //         nextSound()
-        //     }
-        // })
-
-        // const sound6 = new Howl({
-        //     src: ['https://od.lk/s/NzJfNDI4NTk5Njdf/bye%20bye%20my%20blue.mp3'],
-        //     html5: true,
-        //     onend: () => {
-        //         nextSound()
-        //     }
-        // })
-
-        // const sound7 = new Howl({
-        //     src: ['https://od.lk/s/NzJfNDI4NTk5NDVf/cold%20hands.mp3'],
-        //     html5: true,
-        //     onend: () => {
-        //         nextSound()
-        //     }
-        // })
-
-        // const sound8 = new Howl({
-        //     src: ['https://od.lk/s/NzJfNDI4NTk5NDNf/for%20you.mp3'],
-        //     html5: true,
-        //     onend: () => {
-        //         nextSound()
-        //     }
-        // })
-
         setSoundList([
             'https://od.lk/s/NzJfNDI4NTk5NzFf/camellia.mp3',
             'https://od.lk/s/NzJfNDI4NTk5NDRf/a%20night%20like%20tonight.mp3',
@@ -99,6 +28,7 @@ export const MediaProvider = ({ children }) => {
             sound = new Howl({
                 src: [soundList[currentSound]],
                 html5: true,
+                volume: 1,
                 onend: () => {
                     nextSound()
                 }
@@ -142,6 +72,7 @@ export const MediaProvider = ({ children }) => {
             sound = new Howl({
                 src: [soundList[currentSound]],
                 html5: true,
+                volume: 1,
                 onend: () => {
                     nextSound()
                 }
@@ -157,12 +88,17 @@ export const MediaProvider = ({ children }) => {
         // setIsPlaying(false)
     }
 
+    const setVolume = (value) => {
+        Howler.volume(value)
+    }
+
     const values =
     {
         playSound,
         pauseSound,
         nextSound,
         prevSound,
+        setVolume
     }
 
     return <MediaContext.Provider value={values}>{children}</MediaContext.Provider>

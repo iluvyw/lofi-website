@@ -1,6 +1,7 @@
 import React from 'react'
 import Player from '../components/Player'
 import { MediaProvider } from '../hooks/useMedia'
+import Timer from '../components/Timer';
 
 export default function Main() {
     return (
