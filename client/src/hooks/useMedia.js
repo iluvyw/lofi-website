@@ -10,7 +10,8 @@ export const MediaContext = createContext(null)
 
 export const MediaProvider = ({children}) => {
     const sound1 = new Howl({
-        src: [Audio1],
+        src: ['https://od.lk/s/NzJfNDI4NTk5NDRf/a%20night%20like%20tonight.mp3'],
+        html5: true,
         onend: () => {
             console.log('Finished')
             nextSound()
@@ -18,7 +19,7 @@ export const MediaProvider = ({children}) => {
     })
 
     const sound2 = new Howl({
-        src: [Audio2],
+        src: ['https://od.lk/s/NzJfNDI4NTk5NDNf/for%20you.mp3'],
         onend: () => {
             nextSound()
         }
