@@ -1,0 +1,151 @@
+GET http://localhost:8000/user/
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y1ODY3OTEzOWRlYmEwZTNmNzNiNCIsImlhdCI6MTY0MTAzMjYyMH0.Dqbk_Dv5R2jI29pKBO0tZ1IDdj4YXAvYx7ujrChaSfo
+
+###
+
+POST http://localhost:8000/user/signup/
+Content-Type: application/json
+
+{
+    "username": "nptlam",
+    "password": "321456",
+    "fullname": "Nguyen Pham Tung Lam",
+    "email": "nptlam19@apcs.fitus.edu.vn",
+    "phoneNumber": "2663736363"
+}
+
+###
+
+POST http://localhost:8000/user/signin/
+Content-Type: application/json
+
+{
+    "username": "nltuong",
+    "password": "245678"
+}
+
+###
+
+POST http://localhost:8000/user/change_password/
+Content-Type: application/json
+
+{
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y1ODY3OTEzOWRlYmEwZTNmNzNiNCIsImlhdCI6MTY0MDk5MzYxMX0.4jbgoluviUzDgQu-egLKKVG6T7ajpZov8FNuvudgLgw",
+    "oldPassword": "123456",
+    "newPassword": "645321"
+}
+
+###
+
+POST http://localhost:8000/user/upload_avatar/
+Content-Type: application/json
+
+{
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y1ODY3OTEzOWRlYmEwZTNmNzNiNCIsImlhdCI6MTY0MDk5MzYxMX0.4jbgoluviUzDgQu-egLKKVG6T7ajpZov8FNuvudgLgw"
+}
+
+###
+POST http://localhost:8000/user/update/
+Content-Type: application/json
+
+{
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y1ODY3OTEzOWRlYmEwZTNmNzNiNCIsImlhdCI6MTY0MDk5MzYxMX0.4jbgoluviUzDgQu-egLKKVG6T7ajpZov8FNuvudgLgw",
+    "phoneNumber": "1234556687",
+    "about": "need to get fit"
+}
+
+###
+
+GET http://localhost:8000/food/findfood
+Content-Type: application/json
+
+{
+    "name": "Banana"
+}
+
+###
+
+GET http://localhost:8000/post/uploadpost
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y5YjYyMWFiODdjMzRlMGI3YzcxZSIsImlhdCI6MTY0MTA0MDAzOH0.gfvC1nDMmp3pStzrj4Vce8251XzaTua0Lnah0fe2QuI
+Content-Type: application/json
+
+
+###
+
+GET http://localhost:8000/post/commentpost
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y5YjYyMWFiODdjMzRlMGI3YzcxZSIsImlhdCI6MTY0MTA0MDAzOH0.gfvC1nDMmp3pStzrj4Vce8251XzaTua0Lnah0fe2QuI
+Content-Type: application/json
+
+{
+    "postID" : "61d122a2ff9404df1447dd1d",
+    "content" : "Happy new year!"
+}
+
+###
+GET http://localhost:8000/post/getpostlist?_id=61d1521f56b987f68ee919cf
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y5YjYyMWFiODdjMzRlMGI3YzcxZSIsImlhdCI6MTY0MTA0MDAzOH0.gfvC1nDMmp3pStzrj4Vce8251XzaTua0Lnah0fe2QuI
+Content-Type: application/json
+
+{
+    "type" : true
+}
+
+###
+GET http://localhost:8000/post/togglelike
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y5YjYyMWFiODdjMzRlMGI3YzcxZSIsImlhdCI6MTY0MTA0MDAzOH0.gfvC1nDMmp3pStzrj4Vce8251XzaTua0Lnah0fe2QuI
+Content-Type: application/json
+
+{
+    "postID":"61d122a2ff9404df1447dd1d"
+}
+
+###
+GET http://localhost:8000/post/getcomment
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y5YjYyMWFiODdjMzRlMGI3YzcxZSIsImlhdCI6MTY0MTA0MDAzOH0.gfvC1nDMmp3pStzrj4Vce8251XzaTua0Lnah0fe2QuI
+Content-Type: application/json
+
+{
+    "postID":"61d122a2ff9404df1447dd1d"
+}
+
+###
+POST http://localhost:8000/user/update_request/
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y5YjYyMWFiODdjMzRlMGI3YzcxZSIsImlhdCI6MTY0MTA0MDAzOH0.gfvC1nDMmp3pStzrj4Vce8251XzaTua0Lnah0fe2QuI
+###
+GET http://localhost:8000/user/dietitian_list/
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y5YjYyMWFiODdjMzRlMGI3YzcxZSIsImlhdCI6MTY0MTA0MDAzOH0.gfvC1nDMmp3pStzrj4Vce8251XzaTua0Lnah0fe2QuI
+
+###
+GET http://localhost:8000/user/request_list/
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y1ODY3OTEzOWRlYmEwZTNmNzNiNCIsImlhdCI6MTY0MTAzMjYyMH0.Dqbk_Dv5R2jI29pKBO0tZ1IDdj4YXAvYx7ujrChaSfo
+
+###
+POST http://localhost:8000/user/add_dietitian/
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y1ODY3OTEzOWRlYmEwZTNmNzNiNCIsImlhdCI6MTY0MTAzMjYyMH0.Dqbk_Dv5R2jI29pKBO0tZ1IDdj4YXAvYx7ujrChaSfo
+Content-Type: application/json
+
+{
+    "_id" : "61cf9b621ab87c34e0b7c71e"
+}
+
+###
+POST http://localhost:8000/user/remove_dietitian/
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y1ODY3OTEzOWRlYmEwZTNmNzNiNCIsImlhdCI6MTY0MTAzMjYyMH0.Dqbk_Dv5R2jI29pKBO0tZ1IDdj4YXAvYx7ujrChaSfo
+Content-Type: application/json
+
+{
+    "_id" : "61cf9b621ab87c34e0b7c71e"
+}
+
+###
+POST http://localhost:8000/user/register_dietitian/
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZDA0ZjQ5NzY3MjNhY2U4OTJhOTkzMyIsImlhdCI6MTY0MTA0MTczN30.VOYQya3ttzeK8LME34rNRB0-0RCaOKwFybEzZCptw0s
+Content-Type: application/json
+
+{
+    "_id" : "61cf9b621ab87c34e0b7c71e"
+}
+
+###
+GET http://localhost:8000/user/client_list/
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxY2Y5YjYyMWFiODdjMzRlMGI3YzcxZSIsImlhdCI6MTY0MTA0MDAzOH0.gfvC1nDMmp3pStzrj4Vce8251XzaTua0Lnah0fe2QuI
