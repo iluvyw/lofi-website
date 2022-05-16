@@ -30,7 +30,7 @@ const FormPanel = ({ close }) => {
     let jsonData = JSON.stringify(formData);
 
     const config = {
-      header: {
+      headers: {
         "content-type": "application/json",
       },
     };
