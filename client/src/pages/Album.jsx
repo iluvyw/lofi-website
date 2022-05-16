@@ -35,7 +35,7 @@ export default function Album() {
             songs: [],
             backgrounds: []
         }
-        const response = await axios.post(url,data,config)
+        const response = await axios.post(url,JSON.stringify(data),config)
         console.log(response)
     }
 

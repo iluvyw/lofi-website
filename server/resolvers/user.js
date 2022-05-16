@@ -215,7 +215,7 @@ module.exports = {
 
       await album.save();
 
-      await model.User.findOneAndUpdate(user._id, {
+      await model.User.findByIdAndUpdate(user._id, {
         $push: {
           albums: album._id,
         },
