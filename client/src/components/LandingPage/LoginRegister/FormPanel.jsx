@@ -1,11 +1,14 @@
 import CloseIcon from "../../../assets/other/close.svg";
 import { useEffect, useState } from "react";
+import useAuthentication from "../../../hooks/useAuthentication";
+import axios from "axios";
 
 const FormPanel = ({ close }) => {
   const [isSignIn, setSignIn] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullname, setFullname] = useState("");
+  const { user, setUser } = useAuthentication();
 
   const handleClosePanel = () => {
     close();
@@ -13,6 +16,11 @@ const FormPanel = ({ close }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const url =
+      isSignIn === true
+        ? "http://localhost:8000/signin"
+        : "http://localhost:8000/signup";
+
     let formData = {
       email: email,
       password: password,
@@ -21,13 +29,21 @@ const FormPanel = ({ close }) => {
 
     let jsonData = JSON.stringify(formData);
 
-    if (isSignIn) {
-      // Sign in
-      console.log(jsonData);
-    } else {
-      // Sign up
-      console.log(jsonData);
+    async function postUserData() {
+      axios
+        .post(url, jsonData)
+        .then((response) => {
+          console.log(response)
+          if (isSignIn) {
+          }
+          setUser(response);
+        })
+        .catch(console.error("Fail to post user data"));
+
     }
+
+    postUserData();
+    
   };
 
   const handleClickForm = () => {
