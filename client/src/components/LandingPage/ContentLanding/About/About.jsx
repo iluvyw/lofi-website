@@ -23,7 +23,6 @@ const About = () => {
       className="flex justify-end items-start gap-4 opacity-0"
     >
       <div className="flex-col">
-        <h1>{user}</h1>
         <div className="text-[50px]">
           <span className="text-[130px] text-[#FFBD33]">Lofie</span>Chill
         </div>

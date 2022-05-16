@@ -18,8 +18,8 @@ const FormPanel = ({ close }) => {
     e.preventDefault();
     const url =
       isSignIn === true
-        ? "http://localhost:8000/signin"
-        : "http://localhost:8000/signup";
+        ? "http://localhost:8000/user/signin/"
+        : "http://localhost:8000/user/signup/";
 
     let formData = {
       email: email,
@@ -29,21 +29,26 @@ const FormPanel = ({ close }) => {
 
     let jsonData = JSON.stringify(formData);
 
+    const config = {
+      header: {
+        "content-type": "application/json",
+      },
+    };
+
     async function postUserData() {
       axios
-        .post(url, jsonData)
+        .post(url, jsonData, config)
         .then((response) => {
-          console.log(response)
+          console.log(response);
           if (isSignIn) {
+            localStorage.setItem("token", response.data.data.token);
+            setUser(response);
           }
-          setUser(response);
         })
         .catch(console.error("Fail to post user data"));
-
     }
 
     postUserData();
-    
   };
 
   const handleClickForm = () => {
