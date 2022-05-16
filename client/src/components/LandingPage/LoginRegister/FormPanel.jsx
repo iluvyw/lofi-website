@@ -11,23 +11,23 @@ const FormPanel = ({ close }) => {
     close();
   };
 
-  const handleSubmit = () => {
-    // let formData = {
-    //   email: email,
-    //   password: password,
-    //   fullname: fullname,
-    // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let formData = {
+      email: email,
+      password: password,
+      fullname: fullname,
+    };
 
-    // let jsonData = JSON.stringify(formData);
+    let jsonData = JSON.stringify(formData);
 
-    // if (isSignIn) {
-    //   // Sign in
-    //   console.log(jsonData);
-    // } else {
-    //   // Sign up
-    //   console.log(jsonData);
-    // }
-    console.log("dadas");
+    if (isSignIn) {
+      // Sign in
+      console.log(jsonData);
+    } else {
+      // Sign up
+      console.log(jsonData);
+    }
   };
 
   const handleClickForm = () => {
@@ -52,7 +52,10 @@ const FormPanel = ({ close }) => {
         {isSignIn === true ? (
           <>
             <p className="mb-10 text-white text-[30px]">LOGIN</p>
-            <form className="flex flex-col justify-center items-center gap-8 w-[100%]">
+            <form
+              className="flex flex-col justify-center items-center gap-8 w-[100%]"
+              onSubmit={handleSubmit}
+            >
               <div className="w-[45%] flex justify-between items-center">
                 <label className="self-start mt-1" htmlFor="email">
                   Email:
@@ -81,13 +84,10 @@ const FormPanel = ({ close }) => {
                 ></input>
               </div>
 
-              <button
+              <input
                 type="submit"
                 className="rounded-[10px] bg-gunmetal px-6 h-11 py-[8px] hover:bg-yellow-400 hover:text-black transition-all duration-300 text-[18px]"
-                onSubmit={handleSubmit}
-              >
-                Submit
-              </button>
+              />
             </form>
             <p className="mt-8 text-[16px]">
               Do not have an account?
@@ -102,7 +102,10 @@ const FormPanel = ({ close }) => {
         ) : (
           <>
             <p className="mb-10 text-white text-[30px]">REGISTER</p>
-            <form className="flex flex-col justify-center items-center gap-8 w-[100%]">
+            <form
+              className="flex flex-col justify-center items-center gap-8 w-[100%]"
+              onSubmit={handleSubmit}
+            >
               <div className="w-[45%] flex justify-between items-center">
                 <label className="self-start mt-1" htmlFor="fullname">
                   Fullname:
@@ -145,13 +148,10 @@ const FormPanel = ({ close }) => {
                 ></input>
               </div>
 
-              <button
+              <input
                 type="submit"
                 className="rounded-[10px] bg-gunmetal px-6 h-11 py-[8px] hover:text-black hover:bg-yellow-400 transition-all duration-300 text-[18px]"
-                onSubmit={handleSubmit}
-              >
-                Submit
-              </button>
+              ></input>
             </form>
 
             <p className="mt-8 text-[16px]">
