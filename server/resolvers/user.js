@@ -160,10 +160,8 @@ module.exports = {
     fullname = fullname ? fullname : user.fullname;
 
     try {
-      const updatedUser = await model.User.findOneAndUpdate(
-        {
-          _id: user._id,
-        },
+      const updatedUser = await model.User.findByIdAndUpdate(
+        user._id,
         {
           $set: {
             learnTime: learnTime,
@@ -302,17 +300,24 @@ module.exports = {
         message: "Not valid album.",
       });
     }
+    if (!user._id.equals(album.owner)) {
+      return res.json({
+        status: 0,
+        message: "You cannot edit others album.",
+      });
+    }
     name = name ? name : album.name;
     songs = songs ? songs : album.song;
     backgrounds = backgrounds ? backgrounds : album.backgrounds;
 
     try {
-      const updatedAlbum = await model.Album.findOneAndUpdate(
+      const updatedAlbum = await model.Album.findByIdAndUpdate(
         id,
         {
           $set: {
             name: name,
             songs: songs,
+            backgrounds: backgrounds,
           },
         },
         {
