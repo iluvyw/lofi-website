@@ -14,7 +14,7 @@ const FormPanel = ({ close }) => {
     close();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const url =
       isSignIn === true
@@ -39,16 +39,42 @@ const FormPanel = ({ close }) => {
       axios
         .post(url, jsonData, config)
         .then((response) => {
-          console.log(response);
-          if (isSignIn) {
-            localStorage.setItem("token", response.data.data.token);
-            setUser(response);
+          console.log(response)
+          if (response.data.data) {
+            if (isSignIn) {
+              localStorage.setItem("token", response.data.data.token);
+              setUser(response);
+              alert("Sign in successfully")
+            }
+            console.log('dadsqa')
+            return true
+          }
+          else {
+            alert(response.data.message)
+            return false
           }
         })
-        .catch(console.error("Fail to post user data"));
+        .then((res) => {
+          if (res === true) {
+            if (!isSignIn) {
+              alert("Sign up successfully")
+              setSignIn(true)
+            }
+            else {
+              //Move to choosing album
+            }
+          }
+        })
+        .catch(() => {
+          console.error("Fail to post user data")
+          return false
+        });
     }
-
-    postUserData();
+    postUserData()
+    // let success = await postUserData()
+    // success && (success === true && !isSignIn) && setSignIn(true)
+    // success && console.log(success)
+    // (success === true && isSignIn) && 
   };
 
   const handleClickForm = () => {
@@ -88,6 +114,7 @@ const FormPanel = ({ close }) => {
                   type="email"
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                 ></input>
               </div>
 
@@ -102,6 +129,7 @@ const FormPanel = ({ close }) => {
                   type="password"
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
+                  value={password}
                 ></input>
               </div>
 
@@ -138,6 +166,7 @@ const FormPanel = ({ close }) => {
                   type="text"
                   placeholder="Fullname"
                   onChange={(e) => setFullname(e.target.value)}
+                  value={fullname}
                 ></input>
               </div>
 
@@ -152,6 +181,7 @@ const FormPanel = ({ close }) => {
                   type="email"
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                 ></input>
               </div>
 
@@ -166,6 +196,7 @@ const FormPanel = ({ close }) => {
                   type="password"
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
+                  value={password}
                 ></input>
               </div>
 
