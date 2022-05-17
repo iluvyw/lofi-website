@@ -6,7 +6,7 @@ const { Model } = require("mongoose");
 module.exports = {
   me: async (req, res) => {
     try {
-      const user = await model.User.findById(req.user.id);
+      let user = await model.User.findById(req.user.id);
       if (!user) {
         return res.json({
           status: 0,
@@ -22,11 +22,10 @@ module.exports = {
         const album = await model.Album.findById(user.albums[i]);
         albumList.push(album);
       }
-      user.albumList = albumList;
-
+      
       return res.json({
         status: 1,
-        data: user,
+        data: {user: user, albumList: albumList}
       });
     } catch (error) {
       return res.json({

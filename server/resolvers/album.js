@@ -3,6 +3,7 @@ const { Model } = require("mongoose");
 
 module.exports = {
   findAlbum: async (req, res) => {
+    // console.log(req.body)
     try {
       let { id } = req.body;
 

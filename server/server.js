@@ -29,7 +29,7 @@ const routers = require("./routers");
 app.use("/user", routers.userRouter);
 app.use("/album", routers.albumRouter);
 
-const port = 1604;
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}!`);
 });
