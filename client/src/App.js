@@ -4,6 +4,7 @@ import Album from "./pages/Album";
 import CreateAlbum from "./pages/CreateAlbum";
 import { Routes, Route, Link } from "react-router-dom";
 import { AuthProvider } from "./hooks/useAuthentication";
+import LandingPage from './components/LandingPage/LandingPage'
 
 function App() {
   return (

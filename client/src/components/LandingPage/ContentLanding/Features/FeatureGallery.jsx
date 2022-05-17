@@ -17,7 +17,7 @@ let FeatureItem = ({ src, title, subtile, index }) => {
   return (
     <div
       className={classnames(
-        "aspect-video h-[100%] grid grid-cols-[20vw_1fr_200px] w-[100%] bg-gradient-to-b from-black/50 to-slate-500/25 bg-opacity-0",
+        "aspect-video h-[100%] grid grid-cols-[1fr_10fr_1fr] w-[100%] bg-gradient-to-b from-black/50 to-slate-500/25 bg-opacity-0",
         { "is-reveal": onScreen }
       )}
       id="gallery-item-wrapper"
@@ -35,7 +35,7 @@ let FeatureItem = ({ src, title, subtile, index }) => {
         </div>
         <div
           style={{ backgroundImage: `url(${src})` }}
-          className="scale-0.7 bg-cover bg-center origin-center w-[100%] h-[100%] will-change-transform transition-all duration-[1500]"
+          className="bg-center bg-contain bg-no-repeat origin-center w-[100%] h-[100%] will-change-transform transition-all duration-[1500]"
         ></div>
       </div>
       <div></div>

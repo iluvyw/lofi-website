@@ -2,6 +2,7 @@ import CloseIcon from "../../../assets/other/close.svg";
 import { useEffect, useState } from "react";
 import useAuthentication from "../../../hooks/useAuthentication";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const FormPanel = ({ close }) => {
   const [isSignIn, setSignIn] = useState(true);
@@ -9,6 +10,8 @@ const FormPanel = ({ close }) => {
   const [password, setPassword] = useState("");
   const [fullname, setFullname] = useState("");
   const { user, setUser } = useAuthentication();
+
+  const navigate = useNavigate()
 
   const handleClosePanel = () => {
     close();
@@ -62,6 +65,7 @@ const FormPanel = ({ close }) => {
             }
             else {
               //Move to choosing album
+              navigate('/choose-album')
             }
           }
         })

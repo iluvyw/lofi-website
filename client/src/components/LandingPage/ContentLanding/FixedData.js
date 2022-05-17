@@ -1,7 +1,7 @@
-import feature_music from "../../../assets/other/feature_music.png";
-import feature_background from "../../../assets/other/feature_background.png";
-import feature_timer from "../../../assets/other/feature_timer.png";
-import feature_statistic from "../../../assets/other/feature_statistic.jpg";
+import feature_music from "../../../assets/other/music_player.png";
+import feature_background from "../../../assets/other/background.png";
+import feature_timer from "../../../assets/other/timer.png";
+import feature_album from "../../../assets/other/new_album.png";
 
 const data = {
   About:
@@ -11,9 +11,9 @@ const data = {
     description: "",
     listFeatures: [
       {
-        src: feature_statistic,
-        title: "View",
-        subtile: "Learning history",
+        src: feature_album,
+        title: "Create",
+        subtile: "New album",
       },
       {
         src: feature_music,
@@ -22,12 +22,12 @@ const data = {
       },
       {
         src: feature_background,
-        title: "Change",
+        title: "Changing",
         subtile: "Background",
       },
       {
         src: feature_timer,
-        title: "Pomodoro",
+        title: "Learning",
         subtile: "Timer",
       },
     ],
