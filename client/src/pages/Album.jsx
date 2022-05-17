@@ -2,10 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 export default function Album() {
     const [albums, setAlbums] = useState([])
     const [name, setName] = useState("")
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchAlbums = async () => {
@@ -17,26 +19,56 @@ export default function Album() {
                 }
             }
             const response = await axios.get(url, config)
-            setAlbums(response.data.data.albums)
-            setName(response.data.data.fullname)
+            // console.log(response.data.data.albums)
+            setName(response.data.data.user.fullname)
+            setAlbums(response.data.data.albumList)
+            // console.log(response)
+            console.log(response.data.data.albumList)
         } 
         fetchAlbums()
     }, [])
 
-    const createAlbum =  async (name) => {
-        const url = "http://localhost:8000/user/create_album"
+    // const createAlbum = async (name) => {
+    //     const url = "http://localhost:8000/user/create_album"
+    //     const config = {
+    //         headers: {
+    //             Authorization: localStorage.getItem('token'),
+    //             "content-type": "application/json"
+    //         }
+    //     }
+    //     const data = {
+    //         name: name,
+    //         songs: [
+    //             'https://od.lk/s/NzJfNDI4NTk5NzFf/camellia.mp3',
+    //             'https://od.lk/s/NzJfNDI4NTk5NDRf/a%20night%20like%20tonight.mp3',
+    //             'https://od.lk/s/NzJfNDI4NTk5NjJf/burn%20the%20memory.mp3',
+    //             'https://od.lk/s/NzJfNDI4NTk5NTRf/angel.mp3',
+    //             'https://od.lk/s/NzJfNDI4NTk5NTVf/blue.mp3',
+    //             'https://od.lk/s/NzJfNDI4NTk5Njdf/bye%20bye%20my%20blue.mp3',
+    //             'https://od.lk/s/NzJfNDI4NTk5NDVf/cold%20hands.mp3',
+    //             'https://od.lk/s/NzJfNDI4NTk5NDNf/for%20you.mp3',
+    //         ],
+    //         backgrounds: []
+    //     }
+    //     const response = await axios.post(url,JSON.stringify(data),config)
+    //     // console.log(response)
+    //     response.data.data && setAlbums([...albums,response.data.data])
+    // }
+
+    const removeAlbum = async (id) => {
+        const url = "http://localhost:8000/user/remove_album"
         const config = {
             headers: {
-                Authorization: localStorage.getItem('token')
+                Authorization: localStorage.getItem('token'),
+                "content-type": "application/json"
             }
         }
         const data = {
-            name: name,
-            songs: [],
-            backgrounds: []
+            id: id
         }
         const response = await axios.post(url,JSON.stringify(data),config)
         console.log(response)
+        response.data.data && setAlbums(albums.filter(album => album._id !== id))
     }
 
     return (
@@ -45,12 +77,13 @@ export default function Album() {
             <h2 className="text-black text-base">Please choose your album</h2>
             {albums && albums.map((item, index) =>
                 <div key={index} className="bg-white px-10 rounded-full w-1/3 h-28 shadow-2xl flex flex-row justify-evenly items-center bg-opacity-50 my-6 text-black text-xl">
-                    <h1>{item}</h1>
+                    <h1 onClick={() => {navigate(`/album/${item._id}`)}}>{item.name}</h1>
+                    <h2 onClick={() => removeAlbum(item._id)}>Remove</h2>
                 </div>
             )}
             <button 
                 className="bg-white px-10 rounded-full w-1/3 h-28 shadow-2xl flex flex-row justify-evenly items-center bg-opacity-50 my-6 text-black text-xl"
-                onClick={() => createAlbum("Tuong Ngu")}
+                onClick={() => navigate('/create-album')}
             >
                 New Album
             </button>

@@ -3,23 +3,25 @@ import { Howl, Howler } from 'howler'
 
 export const MediaContext = createContext(null)
 
-export const MediaProvider = ({ children }) => {
+export const MediaProvider = ({ children, songs }) => {
     const [soundList, setSoundList] = useState([])
     const [currentSound, setCurrentSound] = useState(0)
     let sound
 
     useEffect(() => {
-        setSoundList([
-            'https://od.lk/s/NzJfNDI4NTk5NzFf/camellia.mp3',
-            'https://od.lk/s/NzJfNDI4NTk5NDRf/a%20night%20like%20tonight.mp3',
-            'https://od.lk/s/NzJfNDI4NTk5NjJf/burn%20the%20memory.mp3',
-            'https://od.lk/s/NzJfNDI4NTk5NTRf/angel.mp3',
-            'https://od.lk/s/NzJfNDI4NTk5NTVf/blue.mp3',
-            'https://od.lk/s/NzJfNDI4NTk5Njdf/bye%20bye%20my%20blue.mp3',
-            'https://od.lk/s/NzJfNDI4NTk5NDVf/cold%20hands.mp3',
-            'https://od.lk/s/NzJfNDI4NTk5NDNf/for%20you.mp3',
-        ])
-    }, [])
+        // setSoundList([
+        //     'https://od.lk/s/NzJfNDI4NTk5NzFf/camellia.mp3',
+        //     'https://od.lk/s/NzJfNDI4NTk5NDRf/a%20night%20like%20tonight.mp3',
+        //     'https://od.lk/s/NzJfNDI4NTk5NjJf/burn%20the%20memory.mp3',
+        //     'https://od.lk/s/NzJfNDI4NTk5NTRf/angel.mp3',
+        //     'https://od.lk/s/NzJfNDI4NTk5NTVf/blue.mp3',
+        //     'https://od.lk/s/NzJfNDI4NTk5Njdf/bye%20bye%20my%20blue.mp3',
+        //     'https://od.lk/s/NzJfNDI4NTk5NDVf/cold%20hands.mp3',
+        //     'https://od.lk/s/NzJfNDI4NTk5NDNf/for%20you.mp3',
+        // ])
+        console.log(songs)
+        setSoundList(songs)
+    }, [songs])
 
     useEffect(() => {
         console.log('New sound', currentSound)
