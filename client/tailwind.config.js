@@ -4,6 +4,9 @@ module.exports = {
   theme: {
     fontFamily: {
       sora: ["Sora"],
+      jamjuree: ["Bai Jamjuree"],
+      bodoni: ["Bodoni Moda"],
+      cutive: ["Cutive Mono"],
     },
     extend: {
       colors: {

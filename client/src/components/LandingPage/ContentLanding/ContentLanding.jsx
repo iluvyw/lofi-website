@@ -1,11 +1,13 @@
 import About from "./About/About";
-// import Features from "./Features/Features";
+import Gallery from "./Features/FeatureGallery";
+import Contact from "./Contact/Contact";
 
 const ContentLanding = () => {
   return (
-    <div className="mt-4">
+    <div className="mt-4" id="content-landing">
       <About />
-      {/* <Features /> */}
+      <Gallery />
+      <Contact />
     </div>
   );
 };

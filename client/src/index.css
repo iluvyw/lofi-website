@@ -6,4 +6,8 @@
   .nav-item {
     @apply cursor-pointer hover:text-gunmetal transition-all duration-300;
   }
+
+  .page-btn {
+    @apply brightness-50 cursor-pointer opacity-75;
+  }
 }

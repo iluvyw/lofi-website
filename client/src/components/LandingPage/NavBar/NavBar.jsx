@@ -22,6 +22,14 @@ const NavBar = () => {
     setVisible(true);
   };
 
+  const handleClickAbout = (elID) => {
+    if (elID) {
+      document.getElementById(elID).scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <>
       <nav ref={navItem} className="flex opacity-0 translate-y-[-100px]">
@@ -29,10 +37,31 @@ const NavBar = () => {
           <LofieLogo />
         </div>
         <ul className="flex gap-10 text-[25px] font-semibold ml-auto mt-[65px]">
-          <li className="nav-item">Features</li>
+          <li
+            className="nav-item"
+            onClick={(e) => {
+              handleClickAbout("gallery-section");
+            }}
+          >
+            Features
+          </li>
           <li className="nav-item">Pricing</li>
-          <li className="nav-item">About</li>
-          <li className="nav-item">Contact</li>
+          <li
+            className="nav-item"
+            onClick={(e) => {
+              handleClickAbout("about-section");
+            }}
+          >
+            About
+          </li>
+          <li
+            className="nav-item"
+            onClick={(e) => {
+              handleClickAbout("contact-section");
+            }}
+          >
+            Contact
+          </li>
         </ul>
         <button
           className="rounded-[10px] bg-gunmetal px-6 h-11 py-[10px] mt-[65px] ml-24 hover:text-white hover:bg-black transition-all duration-300 text-[18px]"

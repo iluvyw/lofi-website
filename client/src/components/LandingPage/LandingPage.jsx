@@ -3,7 +3,8 @@ import NavBar from "./NavBar/NavBar";
 
 const LandingPage = () => {
   return (
-    <div className="h-auto">
+    <div className="w-full h-auto" id="landing-page">
+      <div className="main-container" id="main-container"></div>
       <NavBar />
       <ContentLanding />
     </div>

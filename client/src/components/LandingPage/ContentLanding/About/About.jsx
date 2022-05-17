@@ -3,24 +3,31 @@ import music from "../../../../assets/other/music.png";
 import { gsap, Power3 } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useRef, useEffect } from "react";
-import useAuthentication from "../../../../hooks/useAuthentication";
+import useOnScreen from "../../../../hooks/useOnScreen";
+import { classnames } from "tailwindcss-classnames";
 
 const About = () => {
   gsap.registerPlugin(ScrollTrigger);
-  const { user } = useAuthentication();
   let aboutItem = useRef(null);
+  const onScreen = useOnScreen(aboutItem, 0.1);
 
   useEffect(() => {
-    gsap.to(aboutItem.current, {
-      duration: 12,
-      opacity: 1,
-      ease: Power3.easeOut,
-    });
-  }, []);
+    if (onScreen) {
+      gsap.to(aboutItem.current, {
+        duration: 12,
+        opacity: 1,
+        ease: Power3.easeOut,
+      });
+    }
+  }, [onScreen]);
+
   return (
     <section
       ref={aboutItem}
-      className="flex justify-end items-start gap-4 opacity-0"
+      className={classnames("flex justify-end items-start gap-4 opacity-0", {
+        "is-reveal": onScreen,
+      })}
+      id="about-section"
     >
       <div className="flex-col">
         <div className="text-[50px]">
