@@ -10,9 +10,10 @@ function App() {
     <div className="text-slate-300 font-sora h-screen w-screen px-2 py-4 overflow-y-auto overflow-x-hidden bg-gradient-to-tl from-nearwhite to-nearblack">
       {/* <NavBar /> */}
       <Routes>
-        <Route path='/create-album' element={<CreateAlbum />} />
-        <Route path='/choose-album' element={<Album />} />
-        <Route path='/album/:id' element={<Main />} />
+        {/* <Route exact path='/' element={<Background />} /> */}
+        <Route exact path='/create-album' element={<CreateAlbum />} />
+        <Route exact path='/choose-album' element={<Album />} />
+        <Route exact path='/album/:id' element={<Main />} />
       </Routes>
     </div>
   );

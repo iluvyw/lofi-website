@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import PlusIcon from '../assets/icon/plus.png'
 
 export default function Album() {
     const [albums, setAlbums] = useState([])
@@ -73,19 +74,19 @@ export default function Album() {
 
     return (
         <div className="w-screen h-auto flex flex-col items-center py-10">
-            <h1 className="text-black text-5xl mb-6">Hi {name}</h1>
+            <h1 className="text-black text-5xl mb-6">Hi {name}!</h1>
             <h2 className="text-black text-base">Please choose your album</h2>
             {albums && albums.map((item, index) =>
-                <div key={index} className="bg-white px-10 rounded-full w-1/3 h-28 shadow-2xl flex flex-row justify-evenly items-center bg-opacity-50 my-6 text-black text-xl">
-                    <h1 onClick={() => {navigate(`/album/${item._id}`)}}>{item.name}</h1>
-                    <h2 onClick={() => removeAlbum(item._id)}>Remove</h2>
+                <div key={index} className="bg-white px-20 rounded-full w-1/3 h-28 shadow-2xl flex flex-row justify-between items-center bg-opacity-50 my-6 text-black text-xl">
+                    <h1 className="cursor-pointer" onClick={() => {navigate(`/album/${item._id}`)}}>{item.name}</h1>
+                    <h2 className="text-red-500 cursor-pointer" onClick={() => removeAlbum(item._id)}>Remove</h2>
                 </div>
             )}
             <button 
-                className="bg-white px-10 rounded-full w-1/3 h-28 shadow-2xl flex flex-row justify-evenly items-center bg-opacity-50 my-6 text-black text-xl"
+                className="bg-white p-4 rounded-full w-20 h-20 shadow-2xl flex flex-row justify-evenly items-center bg-opacity-50 my-6 text-black text-xl"
                 onClick={() => navigate('/create-album')}
             >
-                New Album
+                <img src={PlusIcon} alt="plus" className="w-full h-full object-containe" />
             </button>
         </div>
     )
